@@ -56,6 +56,7 @@ ACTION_FRAMES = ['player_action1', 'player_action2']
 ACTION_FRAMES_LEFT = ['player_action1_flip', 'player_action2_flip']
 PLAYER_CHEER_FRAMES = ['player_cheer1', 'player_cheer2']
 HURT_SPRITE = 'player_hurt'
+STAND_FRAMES = ['player_stand', 'player_stand2']
 
 
 try:
@@ -492,9 +493,9 @@ def animate():
             player.image = walking_set[current_frame]
             
         else:
-            stand_sprite = 'player_stand'
-            player.image = stand_sprite
-            current_frame = 0
+            stand_set = STAND_FRAMES
+            current_frame = (current_frame + 1) % len(stand_set)
+            player.image = stand_set[current_frame]
 
     except AttributeError:
         pass
